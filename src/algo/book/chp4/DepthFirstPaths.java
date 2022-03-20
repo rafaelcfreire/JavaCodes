@@ -11,7 +11,7 @@ public class DepthFirstPaths {
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
         source = s;
-        dfs(G, source);
+        dfsNonRecursive(G, source);
     }
 
     public void dfs(Graph G, int v) {
@@ -21,6 +21,24 @@ public class DepthFirstPaths {
                 edgeTo[w] = v;
                 dfs(G, w);
             }
+    }
+
+    public void dfsNonRecursive(Graph G, int v) {
+        Stack<Integer> stack = new Stack<>();
+        marked[v] = true;
+        stack.push(v);
+
+        while (!stack.isEmpty()) {
+            int node = stack.pop();
+
+            for (int w : G.adj(node)) {
+                if (!marked[w]) {
+                    edgeTo[w] = node;
+                    marked[w] = true;
+                    stack.push(w);
+                }
+            }
+        }
     }
 
     public boolean hasPathTo(int v) {
@@ -35,5 +53,25 @@ public class DepthFirstPaths {
             path.push(x);
         path.push(v);
         return path;
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph(11);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 3);
+
+        graph.addEdge(1, 4);
+        graph.addEdge(1, 5);
+
+        graph.addEdge(3, 6);
+        graph.addEdge(3, 7);
+
+        graph.addEdge(5, 8);
+        graph.addEdge(5, 9);
+
+        graph.addEdge(6, 10);
+
+        DepthFirstPaths dfp = new DepthFirstPaths(graph, 0);
     }
 }
