@@ -15,28 +15,26 @@ public class Permutation {
     public static List<List<Integer>> getPermutations(List<Integer> array) {
         List<List<Integer>> permutations = new ArrayList<>();
 
-        getPermutationsOptimized(0, array, permutations);
+        permutationHelper(array, new ArrayList<>(), permutations);
 
         return permutations;
     }
 
-    public static void getPermutationsOptimized(int index, List<Integer> array, List<List<Integer>> permutations) {
-        if (index == array.size() - 1) {
-            permutations.add(array);
+    public static void permutationHelper(List<Integer> array, List<Integer> currentPermutation,
+                                         List<List<Integer>> permutations) {
+        if (array.size() == 0 && currentPermutation.size() > 0) {
+            permutations.add(currentPermutation);
         } else {
-            for (int i = index; i < array.size(); i++) {
-                exchange(array, index, i);
-                getPermutationsOptimized(index + 1, array, permutations);
-                exchange(array, index, i);
+            for (int i = 0; i < array.size(); i++) {
+                List<Integer> newArray = new ArrayList<>(array);
+                newArray.remove(i);
+                List<Integer> newPermutation = new ArrayList<>(currentPermutation);
+                newPermutation.add(array.get(i));
+                permutationHelper(newArray, newPermutation, permutations);
             }
         }
     }
 
-    private static void exchange(List<Integer> array, int i, int j) {
-        int temp = array.get(i);
-        array.set(i, array.get(j));
-        array.set(j, temp);
-    }
 }
 
 
