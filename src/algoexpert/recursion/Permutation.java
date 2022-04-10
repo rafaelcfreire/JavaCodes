@@ -8,7 +8,6 @@ public class Permutation {
         List<Integer> values = new ArrayList<>();
         values.add(1);
         values.add(2);
-        values.add(3);
         List<List<Integer>> result = getPermutations(values);
     }
 
