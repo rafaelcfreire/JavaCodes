@@ -9,7 +9,7 @@ public class NthFibonacci {
     public static void main(String[] args) {
 //        System.out.println(getNthFibIteractive(35));
 //        System.out.println(getNthFibMemoization(35));
-        System.out.println(getNthFib(2));
+        System.out.println(getNthFibMemoization(75));
     }
 
     public static long getNthFibIteractive(int n) {

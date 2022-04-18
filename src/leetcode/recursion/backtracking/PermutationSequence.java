@@ -1,4 +1,4 @@
-package leetcode.recursion;
+package leetcode.recursion.backtracking;
 
 // https://leetcode.com/problems/permutation-sequence/
 // DID NOT PASS

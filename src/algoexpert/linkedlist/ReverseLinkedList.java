@@ -2,20 +2,20 @@ package algoexpert.linkedlist;
 
 public class ReverseLinkedList {
     public static void main(String[] args) {
-        LinkedList one = new LinkedList(0);
-        LinkedList two = new LinkedList(1);
-        LinkedList three = new LinkedList(2);
-        LinkedList four = new LinkedList(3);
-        LinkedList five = new LinkedList(4);
-        LinkedList six = new LinkedList(5);
+        LinkedList zero = new LinkedList(0);
+        LinkedList one = new LinkedList(1);
+        LinkedList two = new LinkedList(2);
+        LinkedList three = new LinkedList(3);
+        LinkedList four = new LinkedList(4);
+        LinkedList five = new LinkedList(5);
 
+        zero.next = one;
         one.next = two;
         two.next = three;
         three.next = four;
         four.next = five;
-        five.next = six;
 
-        reverseLinkedList2(one);
+        LinkedList newHead = recursiveReverseLinkedList(zero);
     }
 
     public static class LinkedList {
@@ -54,7 +54,12 @@ public class ReverseLinkedList {
     public static LinkedList recursiveReverseLinkedList(LinkedList head) {
         if (head == null)
             return null;
-        LinkedList secondElement = head.next;
-        return null;
+        if (head.next == null)
+            return head;
+        LinkedList nextElement = head.next;
+        head.next = null;
+        LinkedList reversed = recursiveReverseLinkedList(nextElement);
+        nextElement.next = head;
+        return reversed;
     }
 }
