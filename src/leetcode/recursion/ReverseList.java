@@ -36,19 +36,6 @@ public class ReverseList {
         ListNode newHead = reverseList(head.next);
         head.next.next = head;
         head.next = null;
-
         return newHead;
     }
 }
-
-
-//        if (head == null)
-//                return null;
-//                if (head.next == null)
-//                return head;
-//
-//                ListNode newHead = reverseList(head.next);
-//                head.next.next = head;
-//                head.next = null;
-//
-//                return newHead;

@@ -5,7 +5,10 @@ public class ReverseNodeKGroup {
     public static class ListNode {
         int val;
         ListNode next;
-        ListNode(int val) { this.val = val; }
+
+        ListNode(int val) {
+            this.val = val;
+        }
     }
 
     public static void main(String[] args) {
@@ -20,8 +23,8 @@ public class ReverseNodeKGroup {
         three.next = four;
         four.next = five;
 
-        reverseOneItem(one);
-//        reverseKGroup(one, 3);
+//        reverseOneItem(one);
+        reverseKGroup(one, 2);
     }
 
     public static ListNode reverseOneItem(ListNode head) {
@@ -33,22 +36,24 @@ public class ReverseNodeKGroup {
     }
 
     public static ListNode reverseKGroup(ListNode head, int k) {
-        ListNode p1 = null, p2 = head, p3 = null;
-        int counter = 1;
+        ListNode curr = head;
+        int count = 0;
 
-        while (counter <= k) {
-            p3 = p2.next;
-            p2.next = p1;
-            p1 = p2;
-            p2 = p3;
-            if (counter == k) {
-                ListNode temp = p1;
-                while (temp.next != null)
-                    temp = temp.next;
-                temp.next = p2;
-            }
-            counter++;
+        while (curr != null && count < k) {
+            count++;
+            curr = curr.next;
         }
-        return p1;
+        if (count == k) {
+            curr = reverseKGroup(curr, k);
+
+            while (count-- > 0) {
+                ListNode temp = head.next;
+                head.next = curr;
+                curr = head;
+                head = temp;
+            }
+            head = curr;
+        }
+        return head;
     }
 }
