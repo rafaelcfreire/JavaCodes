@@ -21,7 +21,7 @@ public class Permutations {
     }
 
     private static void helper(List<Integer> l1, List<Integer> permutation, List<List<Integer>> permutations) {
-        if (l1.size() == 0 && permutation.size() > 0) {
+        if (l1.isEmpty() && permutation.size() > 0) {
             permutations.add(permutation);
         } else {
             for (int i = 0; i < l1.size(); i++) {
