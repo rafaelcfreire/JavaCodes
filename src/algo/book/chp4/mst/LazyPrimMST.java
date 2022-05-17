@@ -4,15 +4,16 @@ import edu.princeton.cs.algs4.*;
 
 public class LazyPrimMST {
     private boolean[] marked;
-    private MinPQ<Edge> pq;
     private Queue<Edge> mst;
+    private MinPQ<Edge> pq;
 
     public LazyPrimMST(EdgeWeightedGraph G) {
         marked = new boolean[G.V()];
-        pq = new MinPQ<>();
         mst = new Queue<>();
+        pq = new MinPQ<>();
 
         visit(G, 0);
+
         while (!pq.isEmpty()) {
             Edge e = pq.delMin();
             int v = e.either(), w = e.other(v);
