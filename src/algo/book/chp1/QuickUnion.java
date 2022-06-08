@@ -5,14 +5,15 @@ import algo.book.common.StdOut;
 import algo.book.common.Stopwatch;
 
 public class QuickUnion {
-    private int[] parent;
+    private int id[];
     private int count;
 
     public QuickUnion(int n){
+        id = new int[n];
         count = n;
-        parent = new int[n];
-        for(int i = 0; i < n; i++)
-            parent[i] = i;
+
+        for (int i = 0; i < n; i++)
+            id[i] = i;
     }
 
     public int count(){
@@ -20,16 +21,17 @@ public class QuickUnion {
     }
 
     public int find(int p) {
-        while(parent[p] != p)
-            p = parent[p];
+        while (p != id[p])
+            p = id[p];
         return p;
     }
 
     public void union(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        if (rootP == rootQ) return;
-        parent[rootP] = rootQ;
+        int i = find(p);
+        int j = find(q);
+        if (i == j)
+            return;
+        id[i] = j;
         count--;
     }
 
