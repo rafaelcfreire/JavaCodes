@@ -1,4 +1,4 @@
-package recursive.book;
+package recursive.book.chp4;
 
 import java.util.LinkedList;
 import java.util.Queue;
