@@ -3,7 +3,7 @@ package generics.upperbound;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Foo {
+public class Foo<T> {
     void doSomething() {
         System.out.println("Do Something");
     }
@@ -14,6 +14,7 @@ public class Foo {
 //      WON'T WORK DUE TO PECS
 //      list.add(new Bar());
     }
+
 }
 
 class Bar extends Foo {

@@ -1,11 +1,11 @@
-package generics.max;
+package generics;
 
-final class Employee {
+public final class Employee {
     public static final Employee DEFAULT_EMPLOYEE = new Employee("Default", 0);
     private final String name;
     private final int id;
 
-    Employee(String name, int id) {
+    public Employee(String name, int id) {
         this.name = name;
         this.id = id;
     }

@@ -1,5 +1,7 @@
 package generics.max;
 
+import generics.Employee;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
