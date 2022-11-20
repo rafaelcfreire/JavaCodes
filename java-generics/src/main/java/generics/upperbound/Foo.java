@@ -9,11 +9,12 @@ public class Foo {
     }
 
     public static void main(String[] args) {
-        List<? super Foo> list = new ArrayList<>();
-        list.add(new Bar());
+        List<? extends Foo> list = new ArrayList<>();
 //      WON'T WORK DUE TO PECS
 //      list.add(new Bar());
     }
+
+
 }
 
 class Bar extends Foo {

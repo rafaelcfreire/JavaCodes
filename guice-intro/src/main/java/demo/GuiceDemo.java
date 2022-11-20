@@ -2,11 +2,13 @@ package demo;
 
 import com.google.inject.*;
 
-import javax.inject.Inject;
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+/*
+ * https://github.com/google/guice/wiki/GettingStarted
+ */
 public class GuiceDemo {
     @Qualifier
     @Retention(RetentionPolicy.RUNTIME)
@@ -18,49 +20,34 @@ public class GuiceDemo {
 
     @Qualifier
     @Retention(RetentionPolicy.RUNTIME)
-    @interface Text {}
+    @interface SecondaryText {}
 
     static class DemoModule extends AbstractModule {
-//        @Provides
-//        @Count
-//        static Integer provideCount() {
-//            return 3;
-//        }
-//
-//        @Provides
-//        @Message
-//        static String provideMessage() {
-//            return "Hello World";
-//        }
-
         @Override
         protected void configure() {
             bind(String.class).annotatedWith(Message.class).toInstance("Hello World");
-            bind(String.class).annotatedWith(Text.class).toInstance("Another text");
             bind(Integer.class).toInstance(3);
-
+            bind(String.class).annotatedWith(SecondaryText.class).toInstance("Secondary text");
         }
     }
 
     static class Greeter {
-
         @Message
         private final String message;
         private final int count;
-
-        @Text
-        private final String text;
+        @SecondaryText
+        private final String secondaryText;
 
         @Inject
-        Greeter(@Message String message, int count, @Text String text) {
+        Greeter(@Message String message, int count, @SecondaryText String secondaryText) {
             this.message = message;
             this.count = count;
-            this.text = text;
+            this.secondaryText = secondaryText;
         }
 
         void sayHello() {
             for (int i = 0; i < count; i++) {
-                System.out.println(message+", "+text);
+                System.out.println(message+", "+secondaryText);
             }
         }
     }
