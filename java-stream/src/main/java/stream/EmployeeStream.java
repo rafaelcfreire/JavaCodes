@@ -3,7 +3,7 @@ package stream;
 import java.util.Arrays;
 import java.util.List;
 
-public final class EmployeeStream<T> {
+public final class EmployeeStream<T> implements Comparable<EmployeeStream> {
     public static final EmployeeStream DEFAULT_EMPLOYEE = new EmployeeStream("Default", 0, Arrays.asList("Default"));
     private final String name;
     private final int id;
@@ -29,5 +29,10 @@ public final class EmployeeStream<T> {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(EmployeeStream o) {
+        return this.getName().compareTo(o.getName());
     }
 }
