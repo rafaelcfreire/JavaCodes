@@ -9,14 +9,10 @@ import java.lang.annotation.RetentionPolicy;
 /*
  * https://github.com/google/guice/wiki/GettingStarted
  */
-public class GuiceDemo {
+final class GuiceDemo {
     @Qualifier
     @Retention(RetentionPolicy.RUNTIME)
     @interface Message {}
-
-    @Qualifier
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface Count {}
 
     @Qualifier
     @Retention(RetentionPolicy.RUNTIME)
@@ -27,7 +23,7 @@ public class GuiceDemo {
         protected void configure() {
             bind(String.class).annotatedWith(Message.class).toInstance("Hello World");
             bind(Integer.class).toInstance(3);
-            bind(String.class).annotatedWith(SecondaryText.class).toInstance("Secondary text");
+            bind(String.class).annotatedWith(SecondaryText.class).toInstance("secondaryText");
         }
     }
 
@@ -39,7 +35,7 @@ public class GuiceDemo {
         private final String secondaryText;
 
         @Inject
-        Greeter(@Message String message, int count, @SecondaryText String secondaryText) {
+        public Greeter(@Message String message, int count, @SecondaryText String secondaryText) {
             this.message = message;
             this.count = count;
             this.secondaryText = secondaryText;
@@ -54,9 +50,7 @@ public class GuiceDemo {
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new DemoModule());
-
         Greeter greeter = injector.getInstance(Greeter.class);
-
         greeter.sayHello();
     }
 }

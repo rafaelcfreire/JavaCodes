@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 // https://leetcode.com/problems/permutations-ii/
 public final class PermutationII {
@@ -19,7 +20,7 @@ public final class PermutationII {
 
         permuteUnique(numsList, new ArrayList<>(), permutations);
 
-        return permutations.stream().toList();
+        return permutations.stream().collect(Collectors.toList());
     }
 
     private static void permuteUnique(List<Integer> array, List<Integer> currentPermutation, Set<List<Integer>> permutations) {
