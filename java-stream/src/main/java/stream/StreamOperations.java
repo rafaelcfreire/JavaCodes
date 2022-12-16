@@ -34,8 +34,7 @@ public class StreamOperations {
         employees.stream()
                 .filter(e -> e.getId() == 3).peek(e -> System.out.println("Filtered value: "+e))
                 .map(e -> e.getName().toUpperCase())
-                .peek(e -> System.out.println("Mapped Value: "+e))
-                .collect(Collectors.toList());
+                .peek(e -> System.out.println("Mapped Value: "+e));
         System.out.println("***************************** LIMIT *****************************************");
         employees.stream().limit(3).forEach(System.out::println);
         System.out.println("***************************** SKIP *****************************************");

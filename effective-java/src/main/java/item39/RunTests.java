@@ -11,14 +11,15 @@ public class RunTests {
         Class<?> testClass = Class.forName(args[0]);
 
         for (Method m : testClass.getMethods()) {
-            if (m.isAnnotationPresent(Test.class)) {
+            if (m.isAnnotationPresent(ExceptionTest.class)) {
                 tests++;
+
                 try {
                     m.invoke(null);
                     passed++;
                 } catch (InvocationTargetException wrappedExc) {
                     Throwable exc = wrappedExc.getCause();
-                    System.out.println(m + " failed: "+exc);
+                    System.out.println(m + "failed: "+exc);
                 } catch (Exception exc) {
                     System.out.println("Invalid @Test: "+m);
                 }
