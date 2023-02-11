@@ -45,5 +45,8 @@ public class EmployeeFunctions {
         System.out.println("************************* PREDICATE *********************************************");
         Predicate<EmployeeStream<String>> predicate = x -> x.getName().equals("Alfred");
         System.out.println(employees.stream().filter(predicate).count());
+        System.out.println("************************* SUPPLIER *********************************************");
+        Supplier<EmployeeStream<String>> supplier = () -> employees.get(0);
+        System.out.println(supplier.get());
     }
 }

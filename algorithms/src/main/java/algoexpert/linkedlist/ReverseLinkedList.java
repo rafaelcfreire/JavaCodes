@@ -16,6 +16,7 @@ public final class ReverseLinkedList {
         four.next = five;
 
         LinkedList newHead = recursiveReverseLinkedList(zero);
+        System.out.println(newHead);
     }
 
     public static class LinkedList {
@@ -42,7 +43,7 @@ public final class ReverseLinkedList {
     public static LinkedList reverseLinkedList2(LinkedList head) {
         LinkedList temp = null, nextNode = null;
 
-        while (head != null){
+        while (head != null) {
             nextNode = head.next;
             head.next = temp;
             temp = head;
