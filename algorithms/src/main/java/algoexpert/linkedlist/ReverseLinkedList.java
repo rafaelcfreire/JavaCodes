@@ -2,12 +2,12 @@ package algoexpert.linkedlist;
 
 public final class ReverseLinkedList {
     public static void main(String[] args) {
-        LinkedList zero = new LinkedList(0);
-        LinkedList one = new LinkedList(1);
-        LinkedList two = new LinkedList(2);
-        LinkedList three = new LinkedList(3);
-        LinkedList four = new LinkedList(4);
-        LinkedList five = new LinkedList(5);
+        LinkedNode zero = new LinkedNode(0);
+        LinkedNode one = new LinkedNode(1);
+        LinkedNode two = new LinkedNode(2);
+        LinkedNode three = new LinkedNode(3);
+        LinkedNode four = new LinkedNode(4);
+        LinkedNode five = new LinkedNode(5);
 
         zero.next = one;
         one.next = two;
@@ -15,21 +15,21 @@ public final class ReverseLinkedList {
         three.next = four;
         four.next = five;
 
-        LinkedList newHead = recursiveReverseLinkedList(zero);
+        LinkedNode newHead = reverseLinkedList2(zero);
         System.out.println(newHead);
     }
 
-    public static class LinkedList {
+    public static class LinkedNode {
         int value;
-        LinkedList next = null;
+        LinkedNode next = null;
 
-        public LinkedList(int value) {
+        public LinkedNode(int value) {
             this.value = value;
         }
     }
 
-    public static LinkedList reverseLinkedList(LinkedList head) {
-        LinkedList p1 = null, p2 = head, p3 = null;
+    public static LinkedNode reverseLinkedList(LinkedNode head) {
+        LinkedNode p1 = null, p2 = head, p3 = null;
 
         while(p2 != null) {
             p3 = p2.next;
@@ -40,8 +40,8 @@ public final class ReverseLinkedList {
         return p1;
     }
 
-    public static LinkedList reverseLinkedList2(LinkedList head) {
-        LinkedList temp = null, nextNode = null;
+    public static LinkedNode reverseLinkedList2(LinkedNode head) {
+        LinkedNode temp = null, nextNode = null;
 
         while (head != null) {
             nextNode = head.next;
@@ -52,14 +52,14 @@ public final class ReverseLinkedList {
         return temp;
     }
 
-    public static LinkedList recursiveReverseLinkedList(LinkedList head) {
+    public static LinkedNode recursiveReverseLinkedList(LinkedNode head) {
         if (head == null)
             return null;
         if (head.next == null)
             return head;
-        LinkedList nextElement = head.next;
+        LinkedNode nextElement = head.next;
         head.next = null;
-        LinkedList reversed = recursiveReverseLinkedList(nextElement);
+        LinkedNode reversed = recursiveReverseLinkedList(nextElement);
         nextElement.next = head;
         return reversed;
     }

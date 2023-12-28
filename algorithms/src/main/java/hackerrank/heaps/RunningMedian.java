@@ -16,11 +16,11 @@ public final class RunningMedian {
         PriorityQueue<Double> higher = new PriorityQueue<>();
         List<Double> result = new ArrayList<>();
 
-        for (int v : a) {
-            if (lower.isEmpty() || v < lower.peek())
-                lower.add(Double.valueOf(v));
+        for (int curr : a) {
+            if (lower.isEmpty() || curr < lower.peek())
+                lower.add(Double.valueOf(curr));
             else
-                higher.add(Double.valueOf(v));
+                higher.add(Double.valueOf(curr));
 
             if (lower.size() - higher.size() == 2)
                 higher.add(lower.poll());
@@ -31,12 +31,14 @@ public final class RunningMedian {
         return result;
     }
 
-    private static void addMedian(PriorityQueue<Double> lower, PriorityQueue<Double> higher, List<Double> result) {
+    private static void addMedian(final PriorityQueue<Double> lower, final PriorityQueue<Double> higher, final List<Double> result) {
         if (lower.size() == higher.size())
-            result.add((lower.peek() + higher.peek()) / 2);
+            result.add((lower.peek() + higher.peek())/2);
         else if (lower.size() > higher.size())
             result.add(lower.peek());
         else
             result.add(higher.peek());
     }
+
+
 }

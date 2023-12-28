@@ -12,7 +12,6 @@ public class Typed {
 
         System.out.println(objects);
 
-//        Set<Object> result = union(Set.of("Car", "Dog", "Money"), Set.of(1, 2, 3));
     }
 
     public static <E> Set<E> union(Set<? extends E> s1, Set<? extends E> s2) {
