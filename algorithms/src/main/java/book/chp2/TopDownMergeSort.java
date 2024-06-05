@@ -4,16 +4,17 @@ import book.common.StdOut;
 import book.common.StdRandom;
 import book.common.Stopwatch;
 
-public final class TopDownMergeSort {
-    private static Comparable[] aux;
+public final class TopDownMergeSort extends IntegerSortAlgorithm {
     private static int counter = 0;
+    private Integer[] aux;
 
-    public static void sort(Comparable[] a){
-        aux = new Comparable[a.length];
+    @Override
+    void sort(final Integer[] a) {
+        aux = new Integer[a.length];
         sort(a, 0, a.length - 1);
     }
 
-    private static void sort(Comparable[] a, int lo, int hi) {
+    private void sort(Integer[] a, int lo, int hi) {
         if(hi <= lo)
             return;
         int mid = lo + (hi - lo)/2;
@@ -22,7 +23,7 @@ public final class TopDownMergeSort {
         merge(a, lo, mid, hi);
     }
 
-    public static void merge(Comparable[] a, int low, int middle, int high) {
+    void merge(Integer[] a, int low, int middle, int high) {
         int i = low, j = middle + 1;
 
         for(int k = low; k <= high; k++)
@@ -42,26 +43,8 @@ public final class TopDownMergeSort {
         }
     }
 
-    private static boolean less(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
-    }
-
     public static void main(String[] args) {
-        /*
-        Comparable[] array = {'E', 'E', 'G', 'M', 'R', 'A', 'C', 'E', 'R', 'T'};
-        merge(array, 0, array.length - 1 / 2, array.length - 1);
-         */
-        int MAX = 100000;
-        int N = 100000;
-        Integer[] a = new Integer[N];
-        for (int i = 0; i < N; i++)
-            a[i] = StdRandom.uniform(0, MAX);
-
-        Stopwatch timer = new Stopwatch();
-        sort(a);
-        for(int c = 0; c < a.length; c++)
-            StdOut.print(a[c]+ " ");
-        System.out.println("Counter: "+counter);
-        System.out.println("Time: "+timer.elapsedTime());
+        TopDownMergeSort topDownMergeSort = new TopDownMergeSort();
+        topDownMergeSort.triggerSort();
     }
 }

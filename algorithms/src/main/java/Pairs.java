@@ -10,7 +10,7 @@ public final class Pairs {
     static int pairs(int k, int[] arr) {
         var totalAmountOfPairs = 0;
 
-        Set<Integer> setOfDifferentElements = Arrays.stream(arr).boxed().collect(Collectors.toSet());
+        Set<Integer> setOfDifferentElements = Arrays.stream(arr).boxed().collect(Collectors.toUnmodifiableSet());
         for (int i = 0; i < arr.length; i++){
             if (setOfDifferentElements.contains(arr[i] + k)) {
                 totalAmountOfPairs = totalAmountOfPairs + 1;

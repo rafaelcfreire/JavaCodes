@@ -2,8 +2,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public final class FrequencyQueries {
     public static void main(String[] args) throws Exception {
@@ -56,7 +57,7 @@ public final class FrequencyQueries {
                                 frequencies.get(ocurrences.get(innerList[1]))
                                         .stream()
                                         .filter(intValue -> !intValue.equals(innerList[1]))
-                                        .collect(Collectors.toList()));
+                                        .collect(toList()));
                     }
 
                     ocurrences.put(innerList[1], ocurrences.get(innerList[1]) + 1);
@@ -71,7 +72,7 @@ public final class FrequencyQueries {
                     frequencies.put(ocurrences.get(innerList[1]),
                             Stream.concat(frequencies.get(ocurrences.get(innerList[1])).stream(),
                                     Stream.of(innerList[1]))
-                                    .collect(Collectors.toList())
+                                    .collect(toList())
                     );
                 }
             } else if(innerList[0] == 2){
@@ -84,7 +85,7 @@ public final class FrequencyQueries {
                                 frequencies.get(ocurrences.get(innerList[1]))
                                         .stream()
                                         .filter(intValue -> !intValue.equals(innerList[1]))
-                                        .collect(Collectors.toList()));
+                                        .collect(toList()));
                     }
 
                     if(ocurrences.get(innerList[1]) > 1) {
@@ -101,7 +102,7 @@ public final class FrequencyQueries {
                         frequencies.put(ocurrences.get(innerList[1]),
                                 Stream.concat(frequencies.get(ocurrences.get(innerList[1])).stream(),
                                         Stream.of(innerList[1]))
-                                        .collect(Collectors.toList())
+                                        .collect(toList())
                         );
                     }
                 }
