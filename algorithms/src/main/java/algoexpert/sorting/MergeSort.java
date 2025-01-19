@@ -5,8 +5,8 @@ public final class MergeSort {
 
     public static void main(String[] args) {
 //        int[] value = new int[]{69, 69, 71, 77, 82, 65, 67, 69, 82, 84};
-        int[] value = new int[]{8, 5, 2, 9, 5, 6, 3};
-//        int[] value = new int[]{2, 3, 3, 1, 9, 5, 6};
+//        int[] value = new int[]{8, 5, 2, 9, 5, 6, 3};
+        int[] value = new int[]{2, 3, 3, 1, 9, 5, 6};
         mergeSort(value);
     }
 

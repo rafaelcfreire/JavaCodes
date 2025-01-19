@@ -26,6 +26,7 @@ public final class BSTTraversal {
         List<Integer> inOrder = inOrderTraverse(ten, new ArrayList<>());
         List<Integer> preOrder = preOrderTraverse(ten, new ArrayList<>());
         List<Integer> postOrder = postOrderTraverse(ten, new ArrayList<>());
+        System.out.println(postOrder);
     }
 
     public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {

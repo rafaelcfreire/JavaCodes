@@ -5,10 +5,7 @@ import java.util.List;
 
 public final class Permutation {
     public static void main(String[] args) {
-        List<Integer> values = new ArrayList<>();
-        values.add(1);
-        values.add(2);
-        List<List<Integer>> result = getPermutations(values);
+        List<List<Integer>> result = getPermutations(List.of(1, 2));
     }
 
     public static List<List<Integer>> getPermutations(List<Integer> array) {

@@ -7,9 +7,15 @@ public final class NthFibonacci {
     static Map<Long, Long> memoize = new HashMap<>();
 
     public static void main(String[] args) {
-        System.out.println(getNthFibIteractive(99));
-//        System.out.println(getNthFibMemoization(35));
-        System.out.println(getNthFibMemoization(99));
+        long startTime = System.nanoTime();
+        System.out.println(getNthFibIteractive(75));
+        long finish = System.nanoTime() - startTime;
+        System.out.println("finish time iteractive: "+finish);
+
+        long startTimeMemoizeAlgo = System.nanoTime();
+        System.out.println(getNthFibMemoization(75));
+        long finishMemoizeAlgo = System.nanoTime() - startTimeMemoizeAlgo;
+        System.out.println("finish time memoize: "+finishMemoizeAlgo);
     }
 
     public static long getNthFibIteractive(long n) {
